@@ -12,8 +12,8 @@
 #  Approach: will store each set as a matrix, and
 #   the whole data is a tensor.
 # #######################################################
-import numpy.random as npr
-import numpy as np
+import autograd.numpy as np
+import autograd.numpy.random as npr
 from math import pi, cos, sin
 def makeData(N, M, SIG, seed=None):
     # Set seed if desired

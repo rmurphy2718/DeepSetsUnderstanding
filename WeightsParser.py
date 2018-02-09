@@ -13,8 +13,9 @@
 #
 # Because: grad uses a vector, but score uses mats
 # #######################################################
-
-
+import autograd.numpy as np
+import autograd.numpy.random as npr
+from collections import OrderedDict
 class WeightsParser(object):
     """A kind of dictionary of weights shapes,
        which can pick out named subsets from a long vector.
@@ -29,7 +30,10 @@ class WeightsParser(object):
         self.idxs_and_shapes[name] = (slice(start, self.N), shape)
     #
     def get(self, vect, name):
-        """Takes in a vector and returns the subset indexed by name."""
+        # type: (object, object) -> object
+        """Takes in a vector and returns the subset indexed by name.
+        :rtype: object
+        """
         idxs, shape = self.idxs_and_shapes[name]
         return np.reshape(vect[idxs], shape)
     #

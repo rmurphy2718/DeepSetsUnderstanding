@@ -8,7 +8,9 @@
 # ######################################################
 
 from math import log, pi, cos, sin
-import numpy as np
+import autograd.numpy as np
+import autograd.numpy.random as npr
+
 # Return entropy of a univariate Gaussian based on the variance.
 # Analytic formula
 def getGaussianEntropy(sigsq):

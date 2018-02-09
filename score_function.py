@@ -14,21 +14,24 @@
 #   () Apply more nonlinearities.
 # #######################################################
 from WeightsParser import *
-import numpy as np
+import autograd.numpy as np
+import autograd.numpy.random as npr
 
 def relu(x):
     return x * (x > 0) + 0.0
 
+def sigmoid(x):
+    return 0.5*(np.tanh(x/2.0) + 1)
 
 #def score(weights):
 
-def buildScoreFunction(phiLayerSizes, rhoLayerSizes, dat):
+def buildScoreFunction(phiLayerSizes, rhoLayerSizes, dat, activation=relu):
     assert isinstance(phiLayerSizes, list)
     assert isinstance(rhoLayerSizes, list)
     assert isinstance(dat, np.ndarray)
     assert dat.ndim == 3
     # Get number of columns in data
-    pp = dat.shape[2]
+    pp = dat.shape[2] # shape = (num matrices, num rows, num columns)
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Set up the weights parser needed for the task.
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -62,23 +65,36 @@ def buildScoreFunction(phiLayerSizes, rhoLayerSizes, dat):
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Build up the score function
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    def score(weights, activation=relu):
+    def score(weights):
         #
         # Perform phi
         #
         W = parser.get(weights, ("phi W", 0))
         B = parser.get(weights, ("phi bias", 0))
-        X = np.matmul(dat, W) + B
+        X = activation(np.matmul(dat, W) + B)
         for ll in xrange(1, numPhiLayers):
             W = parser.get(weights, ("phi W", ll))
             B = parser.get(weights, ("phi bias", ll))
-            X = np.matmul(X, W) + B
+            X = activation(np.matmul(X, W) + B)
         #
         # Add up the representations
         #
         RhoInput = np.sum(X, axis = 0)
         #
-        # Perform rho: another
+        # Perform rho: another set of neural net
         #
-
-
+        W = parser.get(weights, ("rho W", 0))
+        B = parser.get(weights, ("rho bias", 0))
+        X = activation(np.matmul(RhoInput, W) + B)
+        for ll in xrange(1, numRhoLayers + 1): # +1 b/c there's an output layer.
+            W = parser.get(weights, ("rho W", ll))
+            B = parser.get(weights, ("rho bias", ll))
+            # Do not apply activation to last layer
+            if ll < numRhoLayers:
+                X = activation(np.matmul(X, W) + B)
+            else:
+                return (np.matmul(X, W) + B)
+    #
+    #
+    #
+    return score, parser
