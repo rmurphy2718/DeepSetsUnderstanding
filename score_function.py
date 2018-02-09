@@ -13,13 +13,23 @@
 #   () Sum them
 #   () Apply more nonlinearities.
 # #######################################################
+from WeightsParser import *
+import numpy as np
 
 def score(weights):
 
-def buildScoreFunction(phiLayers, rhoLayers, dat):
-    assert isinstance(phiLayers, list)
-    assert isinstance(rhoLayers, list)
-    #
+def buildScoreFunction(phiLayerSizes, rhoLayerSizes, dat):
+    assert isinstance(phiLayerSizes, list)
+    assert isinstance(rhoLayerSizes, list)
+    assert isinstance(dat, np.ndarray)
+    assert dat.ndim == 3
+    # Get number of columns in data
+    pp = dat.shape[2]
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Set up the weights parser needed for the task.
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~
     parser = WeightsParser()
     # Add weights corresponding to phi
-    for ll in xrange()
+    parser.add_weights(("phi W", 0), (pp, phiLayerSizes[0]))
+    parser.add_weights(("phi bias", 0), phiLayerSizes[0])
+    for ll in xrange(
