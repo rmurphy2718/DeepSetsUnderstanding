@@ -16,6 +16,10 @@
 from WeightsParser import *
 import numpy as np
 
+def relu(x):
+    return x * (x > 0) + 0.0
+
+
 #def score(weights):
 
 def buildScoreFunction(phiLayerSizes, rhoLayerSizes, dat):
@@ -58,11 +62,23 @@ def buildScoreFunction(phiLayerSizes, rhoLayerSizes, dat):
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Build up the score function
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    def score(weights):
+    def score(weights, activation=relu):
+        #
         # Perform phi
+        #
         W = parser.get(weights, ("phi W", 0))
         B = parser.get(weights, ("phi bias", 0))
-        for ll in xrange(0, numPhiLayers):
-
+        X = np.matmul(dat, W) + B
+        for ll in xrange(1, numPhiLayers):
+            W = parser.get(weights, ("phi W", ll))
+            B = parser.get(weights, ("phi bias", ll))
+            X = np.matmul(X, W) + B
+        #
+        # Add up the representations
+        #
+        RhoInput = np.sum(X, axis = 0)
+        #
+        # Perform rho: another
+        #
 
 
