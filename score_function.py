@@ -48,9 +48,15 @@ def buildScoreFunction(phiLayerSizes, rhoLayerSizes, dat):
     # > Create a zip of rows & columns for each weight matrix
     # > The first number of rows will depend on the last phi
     numRhoLayers = len(rhoLayerSizes)
-    numRows, numCols = zip([phiLayerSizes[numPhiLayers-1]] + rhoLayerSizes,
+    row_col_tuples = zip([phiLayerSizes[numPhiLayers-1]] + rhoLayerSizes,
                            rhoLayerSizes + [1]) # Output is scalar: last matrix has only 1 column
-    for ll in xrange(0, len(rhoLayerSizes)):
-        parser.add_weights((""), )
+    ll = 0
+    for numRows, numCols in row_col_tuples:
+        parser.add_weights(("rho W", ll), (numRows, numCols))
+        parser.add_weights(("rho bias", ll), (1, numCols))
+        ll += 1
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Perform phi function
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 

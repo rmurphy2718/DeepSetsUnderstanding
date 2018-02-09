@@ -26,3 +26,26 @@ print(ans)
 test = makeData(5, 200, np.array([[3,1],[1,4]]))
 test1 = test[0,:,:]
 np.mean(test1, axis = 0)
+
+#
+# 3-D array: matmults with 2-D array by layer
+#
+#
+#
+# > Set up matrices
+A = np.arange(4,8).reshape(2,2)
+B = np.arange(-3, 1).reshape(2,2)
+C = np.array([-1, 6, 2, 10]).reshape(2,2)
+Z = np.array([3, 2, -5, 9]).reshape(2,2)
+#
+# Make A and B a 3-D array
+tens = np.stack([A, B, C], axis = 0)
+#
+# Matrix multiply each layer in tensor with Z
+#
+print(np.matmul(tens, Z))
+# Compare with the direct multiplications AZ, BZ, CZ.
+print(np.matmul(A, Z))
+print(np.matmul(B, Z))
+print(np.matmul(C, Z))
+# It works!
