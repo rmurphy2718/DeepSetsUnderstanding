@@ -56,7 +56,13 @@ def buildScoreFunction(phiLayerSizes, rhoLayerSizes, dat):
         parser.add_weights(("rho bias", ll), (1, numCols))
         ll += 1
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    # Perform phi function
+    # Build up the score function
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    def score(weights):
+        # Perform phi
+        W = parser.get(weights, ("phi W", 0))
+        B = parser.get(weights, ("phi bias", 0))
+        for ll in xrange(0, numPhiLayers):
+
 
 

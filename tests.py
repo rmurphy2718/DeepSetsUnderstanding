@@ -1,4 +1,5 @@
-# Test the variance formula.
+import numpy as np
+# Test the variance formula
 x = []
 y = []
 alp = pi/8.0
@@ -49,3 +50,16 @@ print(np.matmul(A, Z))
 print(np.matmul(B, Z))
 print(np.matmul(C, Z))
 # It works!
+
+#
+# Test matrix multiply plus vector...
+#   How does the vector get coerced to a matrix?
+#
+#
+B = np.arange(-3,1).reshape(2, 2)
+A = np.arange(1,5).reshape(2, 2)
+b = np.array([30,1]).reshape(1, 2)
+
+np.matmul(A, B) + b
+# Good! The first element gets stretched down the first column
+# the second element gets stretched down the second column, etc.
