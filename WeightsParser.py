@@ -1,10 +1,9 @@
 # #######################################################
-# Ryan Murphy | 2018
 # Project: Understanding the Deep Sets paper through implementation.
 #          Experiment 1: Rotated Gaussians.
 # ---------------------------------------------------------------------
 #
-# WeightsParser.py
+# WeightsParser.py (NOT MY CODE)
 #
 # FROM NEURAL FINGERPRINT: NOT MY CODE
 #  From Duvenaud, Maclaurin,etc.

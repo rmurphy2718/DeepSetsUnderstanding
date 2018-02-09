@@ -16,7 +16,7 @@
 from WeightsParser import *
 import numpy as np
 
-def score(weights):
+#def score(weights):
 
 def buildScoreFunction(phiLayerSizes, rhoLayerSizes, dat):
     assert isinstance(phiLayerSizes, list)
@@ -29,7 +29,28 @@ def buildScoreFunction(phiLayerSizes, rhoLayerSizes, dat):
     # Set up the weights parser needed for the task.
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~
     parser = WeightsParser()
+    #
     # Add weights corresponding to phi
+    #
+    numPhiLayers = len(phiLayerSizes)
     parser.add_weights(("phi W", 0), (pp, phiLayerSizes[0]))
-    parser.add_weights(("phi bias", 0), phiLayerSizes[0])
-    for ll in xrange(
+    parser.add_weights(("phi bias", 0), (1, phiLayerSizes[0]))
+    for ll in xrange(1, numPhiLayers):
+        # Store number_of_columns for this layer and previous
+        #   (previous #cols = current #rows)
+        prevCols = phiLayerSizes[ll - 1]
+        curCols = phiLayerSizes[ll]
+        parser.add_weights(("phi W", ll), (prevCols, curCols))
+        parser.add_weights(("phi bias", ll),  (1, curCols))
+    #
+    # Add weights corresponding to rho
+    #
+    # > Create a zip of rows & columns for each weight matrix
+    # > The first number of rows will depend on the last phi
+    numRhoLayers = len(rhoLayerSizes)
+    numRows, numCols = zip([phiLayerSizes[numPhiLayers-1]] + rhoLayerSizes,
+                           rhoLayerSizes + [1]) # Output is scalar: last matrix has only 1 column
+    for ll in xrange(0, len(rhoLayerSizes)):
+        parser.add_weights((""), )
+
+
