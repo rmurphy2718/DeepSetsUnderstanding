@@ -2,6 +2,8 @@ import autograd.numpy as np
 import autograd.numpy.random as npr
 from score_function import *
 from Loss_and_Optim import *
+from autograd import grad
+
 # # Test the variance formula
 # x = []
 # y = []
@@ -73,7 +75,12 @@ tens = np.stack([A, B, C], axis = 0)
 #
 # A = npr.randn(4).reshape(2,2)
 # relu(A)
+S = np.array((10, 2, 2, 7)).reshape(2,2)
+tIn, tOut = makeData(3, 500, S, 1)
 
+y1 = tIn[1,:,0]
+getGaussianEntropy(np.var(y1))
+tOut[1]
 #
 # Syntax check buildScoreFunction
 #
@@ -112,3 +119,8 @@ Loss(init_weights, targets, sco, loss_l2)
 
 (1.00531659-0.1)**2 + (1.00838425-0.6)**2
 
+#
+# Gradient
+#
+grad_func = grad(Loss)
+test_w_grad = grad_func(init_weights, targets, sco, loss_l2)
