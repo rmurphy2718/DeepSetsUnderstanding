@@ -93,8 +93,9 @@ def buildScoreFunction(phiLayerSizes, rhoLayerSizes, dat, activation=relu):
             if ll < numRhoLayers:
                 X = activation(np.matmul(X, W) + B)
             else:
-                return (np.matmul(X, W) + B)
+                return np.matmul(X, W) + B
     #
+
     #
     #
     return score, parser

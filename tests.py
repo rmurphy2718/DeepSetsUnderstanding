@@ -1,6 +1,7 @@
 import autograd.numpy as np
 import autograd.numpy.random as npr
 from score_function import *
+from Loss_and_Optim import *
 # # Test the variance formula
 # x = []
 # y = []
@@ -98,3 +99,16 @@ init_weights = .25 * npr.randn(len(pars))
 pars.get(init_weights, ("rho W", 3))
 
 print(sco(init_weights))
+
+testo = sco(init_weights)
+type(testo)
+testo.shape
+
+a1 = np.arange(0,5)
+a2 = np.arange(5,10)
+
+targets = np.array((0.1,0.6)).reshape(2,1)
+Loss(init_weights, targets, sco, loss_l2)
+
+(1.00531659-0.1)**2 + (1.00838425-0.6)**2
+
