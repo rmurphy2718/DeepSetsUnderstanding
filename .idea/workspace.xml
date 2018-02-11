@@ -6,7 +6,10 @@
     <bookmark url="file://$PROJECT_DIR$/score_function.py" line="96" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c998ceb-222f-4a67-8abd-01d877a26bbe" name="Default" comment="" />
+    <list default="true" id="8c998ceb-222f-4a67-8abd-01d877a26bbe" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Loss_and_Optim.py" afterPath="$PROJECT_DIR$/Loss_and_Optim.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RunExperiments.py" afterPath="$PROJECT_DIR$/RunExperiments.py" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,14 +22,14 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.49590468">
+    <splitter split-orientation="horizontal" split-proportion="0.62621">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="RunExperiments.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/RunExperiments.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="262">
-                  <caret line="30" column="31" lean-forward="true" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
+                <state relative-caret-position="215">
+                  <caret line="71" column="10" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="95" selection-end-column="10" />
                   <folding>
                     <element signature="e#376#399#0" expanded="true" />
                   </folding>
@@ -41,8 +44,8 @@
           <file leaf-file-name="score_function.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/score_function.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="720">
-                  <caret line="30" column="39" lean-forward="false" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
+                <state relative-caret-position="24">
+                  <caret line="1" column="5" lean-forward="true" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
                   <folding>
                     <element signature="e#587#614#0" expanded="true" />
                   </folding>
@@ -53,8 +56,8 @@
           <file leaf-file-name="Loss_and_Optim.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Loss_and_Optim.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-672">
-                  <caret line="8" column="28" lean-forward="false" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="28" />
+                <state relative-caret-position="244">
+                  <caret line="50" column="111" lean-forward="false" selection-start-line="50" selection-start-column="111" selection-end-line="50" selection-end-column="111" />
                   <folding>
                     <element signature="e#418#446#0" expanded="true" />
                   </folding>
@@ -113,14 +116,15 @@
       <find>np</find>
       <find>parser</find>
       <find>sco</find>
-      <find>loss</find>
       <find>init_weights</find>
       <find>adam</find>
       <find>pp</find>
       <find>buildScoreFunction</find>
+      <find>score_fun</find>
+      <find>validTargets</find>
       <find>score</find>
       <find>dat</find>
-      <find>score_fun</find>
+      <find>loss</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/../..</dir>
@@ -142,10 +146,10 @@
         <option value="$PROJECT_DIR$/entropy_and_rotations.py" />
         <option value="$PROJECT_DIR$/WeightsParser.py" />
         <option value="$PROJECT_DIR$/make_data.py" />
-        <option value="$PROJECT_DIR$/Loss_and_Optim.py" />
         <option value="$PROJECT_DIR$/tests.py" />
         <option value="$PROJECT_DIR$/score_function.py" />
         <option value="$PROJECT_DIR$/RunExperiments.py" />
+        <option value="$PROJECT_DIR$/Loss_and_Optim.py" />
       </list>
     </option>
   </component>
@@ -347,10 +351,10 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294964" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3438849" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3913669" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3208633" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3208633" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -490,30 +494,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/score_function.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="30" column="39" lean-forward="false" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
+        <state relative-caret-position="24">
+          <caret line="1" column="5" lean-forward="true" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
           <folding>
             <element signature="e#587#614#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Loss_and_Optim.py">
+    <entry file="file://$PROJECT_DIR$/RunExperiments.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-672">
-          <caret line="8" column="28" lean-forward="false" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="28" />
+        <state relative-caret-position="215">
+          <caret line="71" column="10" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="95" selection-end-column="10" />
           <folding>
-            <element signature="e#418#446#0" expanded="true" />
+            <element signature="e#376#399#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RunExperiments.py">
+    <entry file="file://$PROJECT_DIR$/Loss_and_Optim.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="30" column="31" lean-forward="true" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
+        <state relative-caret-position="244">
+          <caret line="50" column="111" lean-forward="false" selection-start-line="50" selection-start-column="111" selection-end-line="50" selection-end-column="111" />
           <folding>
-            <element signature="e#376#399#0" expanded="true" />
+            <element signature="e#418#446#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -20,7 +20,7 @@ def loss_l2(target_vec, pred_vec):
     # (n,) and (n,p) array, even if the
     # (n,) array has p elements in second dim
     # The must BOTH be (n,p)
-    assert target_vec.shape == pred_vec.shape
+    assert target_vec.shape == pred_vec.shape, "Target has shape " + str(target_vec.shape) + "\nPredicted has shape " +str(pred_vec.shape)
     return(np.sum((target_vec - pred_vec)**2))
 #
 # Loss function:
@@ -48,8 +48,7 @@ def adam(grad, x, num_iters=100, callback=None,
     m = np.zeros(len(x))
     v = np.zeros(len(x))
     for i in range(num_iters):
-        print("Iteration " + str(i))
-        sys.stdout.flush()
+        sys.stdout.flush() # flush callback..was here to do iteration-by-iteration output, but not needed here.
         g = grad(x)
         if callback: callback(x, i)
         m = (1 - b1) * g      + b1 * m  # First  moment estimate.
