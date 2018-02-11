@@ -25,13 +25,12 @@ def sigmoid(x):
 
 #def score(weights):
 
-def buildScoreFunction(phiLayerSizes, rhoLayerSizes, dat, activation=relu):
+def buildScoreFunction(phiLayerSizes, rhoLayerSizes, pp, activation=relu):
+    # phi layer sizes gives hidden and output
     assert isinstance(phiLayerSizes, list)
+    # rho layer sizes gives only hidden
     assert isinstance(rhoLayerSizes, list)
-    assert isinstance(dat, np.ndarray)
-    assert dat.ndim == 3
-    # Get number of columns in data
-    pp = dat.shape[2] # shape = (num matrices, num rows, num columns)
+    # pp == # columns
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Set up the weights parser needed for the task.
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -65,7 +64,9 @@ def buildScoreFunction(phiLayerSizes, rhoLayerSizes, dat, activation=relu):
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Build up the score function
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    def score(weights):
+    def score(weights, dat):
+        assert isinstance(dat, np.ndarray)
+        assert dat.ndim == 3
         #
         # Perform phi
         #

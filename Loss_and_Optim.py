@@ -29,9 +29,9 @@ def loss_l2(target_vec, pred_vec):
 #
 #  () No need to pass data b/c it's built in to
 #     the score function
-def buildLoss(targets, score_fun, loss_fun):
-    def Loss(weights):
-        preds = score_fun(weights)
+def buildLoss(score_fun, loss_fun):
+    def Loss(weights, inDat, targets):
+        preds = score_fun(weights, inDat)
         return(loss_fun(targets, preds))
     #
     return Loss

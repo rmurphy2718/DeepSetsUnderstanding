@@ -107,7 +107,7 @@ pars.get(init_weights, ("rho W", 3))
 
 print(sco(init_weights))
 
-testo = sco(init_weights)
+testo = sco(init_weights, tens)
 type(testo)
 testo.shape
 
