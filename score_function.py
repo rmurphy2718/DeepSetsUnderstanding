@@ -79,7 +79,7 @@ def buildScoreFunction(phiLayerSizes, rhoLayerSizes, dat, activation=relu):
         #
         # Add up the representations
         #
-        RhoInput = np.sum(X, axis = 0)
+        RhoInput = np.sum(X, axis = 1)
         #
         # Perform rho: another set of neural net
         #

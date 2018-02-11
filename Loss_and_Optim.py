@@ -13,6 +13,7 @@
 
 from score_function import *
 import autograd.numpy as np
+import sys
 
 def loss_l2(target_vec, pred_vec):
     # We CANNOT compute the loss between a
@@ -28,16 +29,19 @@ def loss_l2(target_vec, pred_vec):
 #
 #  () No need to pass data b/c it's built in to
 #     the score function
-def Loss(weights, targets, score_fun, loss_fun):
-    preds = score_fun(weights)
-    return(loss_fun(targets, preds))
+def buildLoss(targets, score_fun, loss_fun):
+    def Loss(weights):
+        preds = score_fun(weights)
+        return(loss_fun(targets, preds))
+    #
+    return Loss
 #
 # Adam optimizer
 # Not my function!
 #   Taken directly from Duvenaud and MacLaurin's fingerprint code.
 #
 
-def adam(grad, x, callback=None, num_iters=100,
+def adam(grad, x, num_iters=100, callback=None,
          step_size=0.001, b1=0.9, b2=0.999, eps=10**-8):
     """Adam as described in http://arxiv.org/pdf/1412.6980.pdf.
     It's basically RMSprop with momentum and some correction terms."""
@@ -46,7 +50,7 @@ def adam(grad, x, callback=None, num_iters=100,
     for i in range(num_iters):
         print("Iteration " + str(i))
         sys.stdout.flush()
-        g = grad(x, i)
+        g = grad(x)
         if callback: callback(x, i)
         m = (1 - b1) * g      + b1 * m  # First  moment estimate.
         v = (1 - b2) * (g**2) + b2 * v  # Second moment estimate.

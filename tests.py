@@ -111,16 +111,21 @@ testo = sco(init_weights)
 type(testo)
 testo.shape
 
-a1 = np.arange(0,5)
-a2 = np.arange(5,10)
 
 targets = np.array((0.1,0.6)).reshape(2,1)
-Loss(init_weights, targets, sco, loss_l2)
+Loss = buildLoss(targets, sco, loss_l2)
+Loss(init_weights)
 
-(1.00531659-0.1)**2 + (1.00838425-0.6)**2
+(testo[0]-0.1)**2 + (testo[1]-0.6)**2
 
 #
 # Gradient
 #
 grad_func = grad(Loss)
 test_w_grad = grad_func(init_weights, targets, sco, loss_l2)
+
+
+
+tens2 = np.arange(0,2*3*4).reshape(2,3,4)
+print(tens2)
+print(np.sum(tens2, axis = 1))
