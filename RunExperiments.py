@@ -95,6 +95,16 @@ SSE = Loss(trained_weights, testData, testTargets)
 MSE = SSE/float(len(testTargets))
 print("Mean Square Error: %f " % MSE)
 
+# permute
+testIndx_New = np.arange(0, len(testTargets))
+npr.shuffle(testIndx_New)
+testData_New = testData[testIndx_New,:,:]
+
+SSE_1 = Loss(trained_weights, testData, testTargets)
+MSE_1 = SSE_1/float(len(testTargets))
+print("Mean Square Error after permutation: %f " % MSE)
+
+
 # ======================================
 #
 # Compare to performance achievable by "cheating"
