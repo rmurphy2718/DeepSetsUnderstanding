@@ -16,7 +16,7 @@ from autograd import grad
 import matplotlib.pyplot as plt
 #  Make dataset
 S = np.array((10, 2, 2, 7)).reshape(2, 2)
-N = 2**8
+N = 2**9
 M = 500
 inDat, targets = makeData(N, M, S, 1)
 
@@ -73,7 +73,7 @@ def callback(weights, iter):
 #
 # ------------------------------------------
 init_weights = 0.25 * npr.randn(len(pars))
-trained_weights = adam(grad_fun, init_weights, 200, callback)
+trained_weights = adam(grad_fun, init_weights, 250, callback)
 # ------------------------------------------
 # Loss plots
 #
@@ -93,4 +93,23 @@ plt.show()
 #
 SSE = Loss(trained_weights, testData, testTargets)
 MSE = SSE/float(len(testTargets))
-print(MSE)
+print("Mean Square Error: %f " % MSE)
+
+# ======================================
+#
+# Compare to performance achievable by "cheating"
+# Use knowledge that it's from a Gaussian
+# Compute Variance
+# Call formula for entropy from variance
+# ======================================
+cheatPreds = []
+for jj in xrange(0,testData.shape[0]):
+    Y1 = testData[jj, :, 0]
+    s2 = np.var(Y1)
+    cheatPreds.append(getGaussianEntropy(s2))
+
+cheatPreds = np.array(cheatPreds).reshape(len(cheatPreds), 1)
+
+loss_l2(testTargets, cheatPreds)/len(cheatPreds)
+
+

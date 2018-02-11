@@ -29,3 +29,8 @@ def getEntropyRotated(alph, SIG):
     getGaussianEntropy(rotatedVariance)
 
 
+#
+# Laplace entropy for comparison
+#
+def getLaplaceEntropy(b):
+    return(np.log(2*b) + 1)
