@@ -3,10 +3,8 @@
 #          Experiment 1: Rotated Gaussians.
 # ---------------------------------------------------------------------
 #
-# WeightsParser.py (NOT MY CODE)
-#
-# FROM NEURAL FINGERPRINT: NOT MY CODE
-#  From Duvenaud, Maclaurin,etc.
+# Code from Learning Molecular Fingerprints paper, e.g
+# https://github.com/HIPS/neural-fingerprint
 #
 # This will assist in taking a huge vector of weights
 # and returning matrices of the desired shape

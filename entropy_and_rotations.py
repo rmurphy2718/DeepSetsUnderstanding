@@ -3,23 +3,25 @@
 # Project: Understanding the Deep Sets paper through implementation.
 #          Experiment 1: Rotated Gaussians.
 # ---------------------------------------------------------------------
-#  entropy_and_rotations.py contains
-#  helper functions to calculate entropy
+#  helper functions to calculate analytical entropy
 # ######################################################
 
 from math import log, pi, cos, sin
-import autograd.numpy as np
-import autograd.numpy.random as npr
 
-# Return entropy of a univariate Gaussian based on the variance.
-# Analytic formula
 def getGaussianEntropy(sigsq):
+    """
+    Analytic formula for entropy of a univariate Gaussian based on the variance.
+    :param sigsq: variance
+    """
     return 0.5*log(2.0*pi*sigsq) + 0.5
 
-# Return entropy of first component of a bivariate Gaussian rotated by alpha via rotation R(alpha)
-#  No rotations actually nescessary -- we have closed-form formulae for what would happen if we did rotate
+
 def getEntropyRotated(alph, SIG):
-    # SIG is matrix of original data
+    """
+      Return entropy of first component of a bivariate Gaussian rotated by alpha via rotation R(alpha)
+      No rotations actually necessary -- we have closed-form formulae for what would happen if we did rotate
+    """
+    # SIG is sigma matrix of the original data
     assert SIG[0, 1] == SIG[1, 0], "Matrix SIG should be symmetric."
     # Calculate variance first component under rotated Gaussian
     rotatedVariance = SIG[0, 0]*(cos(alph)**2) - \
@@ -29,8 +31,3 @@ def getEntropyRotated(alph, SIG):
     getGaussianEntropy(rotatedVariance)
 
 
-#
-# Laplace entropy for comparison
-#
-def getLaplaceEntropy(b):
-    return(np.log(2*b) + 1)

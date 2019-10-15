@@ -5,25 +5,37 @@
 # ---------------------------------------------------------------------
 # make_data.py:
 #   () Make a full dataset for this task, containing both training and test
-#   () The data each represents different data SETS of bivariate data of size M, each drawn from bivariate normals with mean 0 and some variance
+#   () The data points represent different SETS of bivariate data of size M,
+#      each drawn from bivariate normals with mean 0 and some variance
 #       > The variances are determined through a rotation.
 #   () The goal is: Given a new SET of bivariate data, predict the entropy of that set.
 #
 #  Approach: will store each set as a matrix, and
 #   the whole data is a tensor.
 # #######################################################
+
 import autograd.numpy as np
 import autograd.numpy.random as npr
 from math import pi, cos, sin
 from entropy_and_rotations import *
-def makeData(N, M, SIG, seed=None):
+
+
+def make_data(N, M, SIG, seed=None):
+    """
+    Create data from entropy task in paper
+    :param N: Number of sampled sets
+    :param M: Size of each set
+    :param SIG: Covariance matrix
+    :param seed: Optional random seed
+    :return: Tuple: data and targets
+    """
     # Set seed if desired
     if seed is not None:
         npr.seed(seed)
     # Initialize data
     dat = np.zeros((N, M, 2)) # N tensors, M rows, 2 columns
     targs = np.zeros(N).reshape(N,1)
-    for ii in xrange(0,N):
+    for ii in range(0,N):
         # Draw a random rotation angle
         alp = np.random.uniform(0, pi)
         # Construct rotation matrix
@@ -38,5 +50,5 @@ def makeData(N, M, SIG, seed=None):
         #
         # Target is entropy of first component
         targs[ii] = getGaussianEntropy(VarMat[0,0])
-    #
-    return(dat,targs)
+
+    return dat,targs
